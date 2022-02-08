@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% block title %}Расписание событий{% endblock %}
+{% block title %}Events schedule{% endblock %}
 {% block content %}
-  <h1>Запланированные события</h1>
+  <h1>Events</h1>
   <div class="card-deck mb-3 text-center">
     {% for event in events %}
       <div class="card mb-4 shadow-sm" style="min-width: 300px;">
@@ -9,15 +9,15 @@
           <h4 class="my-0 font-weight-normal">{{ event.subject }} (ID: {{ event._id }})</h4>
         </div>
         <div class="card-body">
-          <h3 class="card-title pricing-card-title">Автор: {{ event.author }}</h3>
+          <h3 class="card-title pricing-card-title">User: {{ event.author }}</h3>
           <ul class="list-unstyled mt-3 mb-4">
             <li>{{ event.description }}</li>
-            <li>Начало: <b>{{ event.start }}</b></li>
-            <li> Конец: <b>{{ event.end }}</b></li>
+            <li>Start: <b>{{ event.start }}</b></li>
+            <li> Dead line: <b>{{ event.end }}</b></li>
           </ul>
           {% if event.author == current_user.email %}
-            <a class="btn btn-primary" href="/event/{{ event._id }}" role="button">Изменить</a>
-            <a class="btn btn-primary" href="/event/del/{{ event._id }}" role="button">Удалить</a>
+            <a class="btn btn-primary" href="/event/{{ event._id }}" role="button">Edit</a>
+            <a class="btn btn-primary" href="/event/del/{{ event._id }}" role="button">Delete</a>
           {% endif %}
         </div>
       </div>
